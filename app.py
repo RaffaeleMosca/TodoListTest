@@ -23,6 +23,11 @@ try:
 except Exception as e:
     print(e)
 
+app.secret_key = uuid.uuid4().hex
+
+from datetime import timedelta
+app.permanent_session_lifetime = timedelta(minutes=30)
+
 #Database su cloud
 app.config['MONGO_URI'] = 'mongodb+srv://RafMosca:RafMoscaDB@cluster0.rzvmm.mongodb.net/?retryWrites=true&w=majority'
 mongo = PyMongo(app)
